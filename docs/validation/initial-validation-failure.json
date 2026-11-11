@@ -1,0 +1,9 @@
+{
+  "checkedOn": "2026-11-11",
+  "phase": "Initial SQL service and domain validation",
+  "unitTests": { "total": 33, "passed": 32, "failed": 1 },
+  "failure": "The export integrity verifier did not detect removal of a resolved finding. It verified current open finding IDs only.",
+  "repair": "Replay audited imports and approvals to reconstruct and compare the complete finding history, including detection and resolution timestamps. Also reconcile duplicate classification, proposal evidence and review metadata against the audit.",
+  "typeErrors": ["Explicit Primitive result type was needed when decoding proposed JSON.", "D1 batch result rows needed the Record<string, unknown> generic."],
+  "scope": "Retained development failure, not a passing release result."
+}

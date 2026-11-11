@@ -1,0 +1,297 @@
+{
+  "url": "http://127.0.0.1:8787",
+  "startedAt": "2026-11-11T16:50:07.811Z",
+  "sourceFingerprint": "a1acf1053886e2ed34eca08d66b47315995962bcacd7acd27c9e0a00cf4438d9",
+  "scope": "Actual HTTP requests and evidence verification using synthetic data. Expiry is validated separately with an injected service clock; no 24-hour public wait is claimed.",
+  "cases": [
+    {
+      "name": "create an empty SQL-backed workspace with declared batch masters",
+      "passed": true
+    },
+    {
+      "name": "missing or fabricated capability cannot read a workspace",
+      "passed": true
+    },
+    {
+      "name": "cross-origin mutation, malformed JSON and wrong content type are rejected",
+      "passed": true
+    },
+    {
+      "name": "bounded streaming input rejects an oversized request",
+      "passed": true
+    },
+    {
+      "name": "reviewer and observer cannot ingest data",
+      "passed": true
+    },
+    {
+      "name": "sample import produces independent expected totals and retained duplicates",
+      "passed": false,
+      "error": "Ingest source: expected 200, received 500; INTERNAL\n\n500 !== 200\n"
+    },
+    {
+      "name": "replayed import is idempotent even with an old revision",
+      "passed": false,
+      "error": "Ingest source: expected 200, received 500; INTERNAL\n\n500 !== 200\n"
+    },
+    {
+      "name": "reusing an import key for different data is a conflict",
+      "passed": false,
+      "error": "Different file same key: expected 409, received 200; unexpected response\n\n200 !== 409\n"
+    },
+    {
+      "name": "raw canonical hashes and source pointers reconcile",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'ordinal')"
+    },
+    {
+      "name": "operator proposal leaves measurement and raw values unchanged",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "operator and observer cannot approve or reject a proposal",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "reviewer approval updates only a versioned overlay and retains resolved history",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "review cannot be recorded twice",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "observer cannot propose a correction",
+      "passed": true
+    },
+    {
+      "name": "cross-workspace read and source-row write are isolated",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "two proposals target a version; only the first approved correction can use it",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "stale proposal can be rejected without changing measurement values",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "identity edits and non-improving corrections are rejected",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "unknown request fields, nested source data and stale revisions are rejected",
+      "passed": true
+    },
+    {
+      "name": "a follow-up source import closes the missing slot without replacing existing findings",
+      "passed": false,
+      "error": "Ingest source: expected 200, received 409; REVISION_CONFLICT\n\n409 !== 200\n"
+    },
+    {
+      "name": "concurrent HTTP imports against one revision have exactly one atomic winner",
+      "passed": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n-   200,\n    409,\n+   409\n  ]\n"
+    },
+    {
+      "name": "per-workspace import limits reject further writes without partial data",
+      "passed": false,
+      "error": "Ingest source: expected 200, received 409; REVISION_CONFLICT\n\n409 !== 200\n"
+    },
+    {
+      "name": "observer reads persistent state and all evidence reconciles to reviewed changes",
+      "passed": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  {\n+   audit: [\n+     {\n+       body: {\n+         action: 'IMPORT',\n+         actorLabel: 'Operator',\n+         at: '2026-11-11T16:50:07.934Z',\n+         details: {\n+           digest: 'a66835d78a32d5c13d6e61099f2197460966f2a94babcfc51524dbe6c36b560d',\n+           importId: '047dbc20-d753-49c6-913e-23f5202fcc88',\n+           rowIds: [\n+             'c737406c-7f27-4704-ada5-9ed43b86ac2e'\n+           ],\n+           rows: 1,\n+           source: 'synthetic-pressure-followup.json'\n+         },\n+         revision: 1,\n+         role: 'operator',\n+         workspaceId: '496eabed-341e-41e9-9a32-8593c0eb63ef'\n+       },\n+       eventHash: 'a8333443381f17d67032793bc37d803c3a665f71a394c03356d7113433008a82',\n+       id: '35688ece-843a-42d2-b867-c3faf56115b8',\n+       previousHash: 'GENESIS'\n+     }\n+   ],\n+   findings: [\n+     {\n+       batchCode: 'AX-1101',\n+       code: 'MISSING_MEASUREMENT',\n+       detectedAt: '2026-11-11T16:50:07.934Z',\n+       field: 'temperature',\n+       id: 'gap:AX-1101:temperature',\n+       message: 'No forming temperature measurement was received for expected sample S01.',\n+       resolvedAt: null,\n+       rowId: null,\n+       severity: 'error',\n+       status: 'open'\n+     },\n+     {\n+       batchCode: 'AX-1101',\n+       code: 'MISSING_MEASUREMENT',\n+       detectedAt: '2026-11-11T16:50:07.934Z',\n+       field: 'thickness',\n+       id: 'gap:AX-1101:thickness',\n+       message: 'No wall thickness measurement was received for expected sample S01.',\n+       resolvedAt: null,\n+       rowId: null,\n+       severity: 'error',\n+       status: 'open'\n+     },\n+     {\n+       batchCode: 'AX-1101',\n+       code: 'MISSING_MEASUREMENT',\n+       detectedAt: '2026-11-11T16:50:07.934Z',\n+       field: 'pressure',\n+       id: 'gap:AX-1101:pressure',\n+       message: 'No forming pressure measurement was received for expected sample S01.',\n+       resolvedAt: null,\n+       rowId: null,\n+       severity: 'error',\n+       status: 'open'\n+     },\n+     {\n+       batchCode: 'AX-1102',\n+       code: 'MISSING_MEASUREMENT',\n+       detectedAt: '2026-11-11T16:50:07.934Z',\n+       field: 'temperature',\n+       id: 'gap:AX-1102:temperature',\n+       message: 'No forming temperature measurement was received for expected sample S01.',\n+       resolvedAt: null,\n+       rowId: null,\n+       severity: 'error',\n+       status: 'open'\n+     },\n+     {\n+       batchCode: 'AX-1102',\n+       code: 'MISSING_MEASUREMENT',\n+       detectedAt: '2026-11-11T16:50:07.934Z',\n+       field: 'thickness',\n+       id: 'gap:AX-1102:thickness',\n+       message: 'No wall thickness measurement was received for expected sample S01.',\n+       resolvedAt: null,\n+       rowId: null,\n+       severity: 'error',\n+       status: 'open'\n+     },\n+     {\n+       batchCode: 'AX-1102',\n+       code: 'MISSING_MEASUREMENT',\n+       detectedAt: '2026-11-11T16:50:07.934Z',\n+       field: 'pressure',\n+       id: 'gap:AX-1102:pressure',\n+       message: 'No forming pressure measurement was received for expected sample S01.',\n+       resolvedAt: null,\n+       rowId: null,\n+       severity: 'error',\n+       status: 'open'\n+     },\n+     {\n+       batchCode: 'AX-1103',\n+       code: 'MISSING_MEASUREMENT',\n+       detectedAt: '2026-11-11T16:50:07.934Z',\n+       field: 'temperature',\n+       id: 'gap:AX-1103:temperature',\n+       message: 'No forming temperature measurement was received for expected sample S01.',\n+       resolvedAt: null,\n+       rowId: null,\n+       severity: 'error',\n+       status: 'open'\n+     },\n+     {\n+       batchCode: 'AX-1103',\n+       code: 'MISSING_MEASUREMENT',\n+       detectedAt: '2026-11-11T16:50:07.934Z',\n+       field: 'thickness',\n+       id: 'gap:AX-1103:thickness',\n+       message: 'No wall thickness measurement was received for expected sample S01.',\n+       resolvedAt: null,\n+       rowId: null,\n+       severity: 'error',\n+       status: 'open'\n+     }\n+   ],\n+   imports: [\n+     {\n+       createdAt: '2026-11-11T16:50:07.934Z',\n+       digest: 'a66835d78a32d5c13d6e61099f2197460966f2a94babcfc51524dbe6c36b560d',\n+       id: '047dbc20-d753-49c6-913e-23f5202fcc88',\n+       rows: 1,\n+       source: 'synthetic-pressure-followup.json'\n+     }\n+   ],\n+   measurements: [\n+     {\n+       effective: {\n+         batchCode: 'AX-1103',\n+         equipment: 'P-01',\n+         measuredAt: '2026-11-10T09:15:00.000Z',\n+         parameter: 'pressure',\n+         sampleId: 'S01',\n+         sourceRecordId: 'MES-011',\n+         stage: 'Forming',\n+         unit: 'bar',\n+         value: 10.5\n+       },\n+       rowId: 'c737406c-7f27-4704-ada5-9ed43b86ac2e',\n+       version: 1\n+     }\n+   ],\n-   audit: [],\n-   findings: [],\n-   imports: [],\n-   measurements: [],\n    proposals: [],\n    quality: {\n      batches: [\n        {\n          code: 'AX-1101',\n+         errors: 3,\n-         errors: 0,\n          expected: 3,\n          line: 'Press 01',\n          material: 'Alloy housing A',\n          notices: 0,\n          observed: 0,\n          plannedAt: '2026-11-10T08:00:00.000Z',\n+         state: 'attention',\n-         state: 'awaiting',\n          usable: 0\n        },\n        {\n          code: 'AX-1102',\n+         errors: 3,\n-         errors: 0,\n          expected: 3,\n          line: 'Press 02',\n          material: 'Alloy housing A',\n          notices: 0,\n          observed: 0,\n          plannedAt: '2026-11-10T09:00:00.000Z',\n+         state: 'attention',\n-         state: 'awaiting',\n          usable: 0\n        },\n        {\n          code: 'AX-1103',\n+         errors: 2,\n-         errors: 0,\n          expected: 3,\n          line: 'Press 01',\n          material: 'Alloy housing B',\n          notices: 0,\n+         observed: 1,\n-         observed: 0,\n          plannedAt: '2026-11-10T10:00:00.000Z',\n+         state: 'attention',\n+         usable: 1\n-         state: 'awaiting',\n-         usable: 0\n        }\n      ],\n+     findings: [\n+       {\n+         batchCode: 'AX-1101',\n+         code: 'MISSING_MEASUREMENT',\n+         field: 'temperature',\n+         id: 'gap:AX-1101:temperature',\n+         message: 'No forming temperature measurement was received for expected sample S01.',\n+         rowId: null,\n+         severity: 'error'\n+       },\n+       {\n+         batchCode: 'AX-1101',\n+         code: 'MISSING_MEASUREMENT',\n+         field: 'thickness',\n+         id: 'gap:AX-1101:thickness',\n+         message: 'No wall thickness measurement was received for expected sample S01.',\n+         rowId: null,\n+         severity: 'error'\n+       },\n+       {\n+         batchCode: 'AX-1101',\n+         code: 'MISSING_MEASUREMENT',\n+         field: 'pressure',\n+         id: 'gap:AX-1101:pressure',\n+         message: 'No forming pressure measurement was received for expected sample S01.',\n+         rowId: null,\n+         severity: 'error'\n+       },\n+       {\n+         batchCode: 'AX-1102',\n+         code: 'MISSING_MEASUREMENT',\n+         field: 'temperature',\n+         id: 'gap:AX-1102:temperature',\n+         message: 'No forming temperature measurement was received for expected sample S01.',\n+         rowId: null,\n+         severity: 'error'\n+       },\n+       {\n+         batchCode: 'AX-1102',\n+         code: 'MISSING_MEASUREMENT',\n+         field: 'thickness',\n+         id: 'gap:AX-1102:thickness',\n+         message: 'No wall thickness measurement was received for expected sample S01.',\n+         rowId: null,\n+         severity: 'error'\n+       },\n+       {\n+         batchCode: 'AX-1102',\n+         code: 'MISSING_MEASUREMENT',\n+         field: 'pressure',\n+         id: 'gap:AX-1102:pressure',\n+         message: 'No forming pressure measurement was received for expected sample S01.',\n+         rowId: null,\n+         severity: 'error'\n+       },\n+       {\n+         batchCode: 'AX-1103',\n+         code: 'MISSING_MEASUREMENT',\n+         field: 'temperature',\n+         id: 'gap:AX-1103:temperature',\n+         message: 'No forming temperature measurement was received for expected sample S01.',\n+         rowId: null,\n+         severity: 'error'\n+       },\n+       {\n+         batchCode: 'AX-1103',\n+         code: 'MISSING_MEASUREMENT',\n+         field: 'thickness',\n+         id: 'gap:AX-1103:thickness',\n+         message: 'No wall thickness measurement was received for expected sample S01.',\n+         rowId: null,\n+         severity: 'error'\n+       }\n+     ],\n-     findings: [],\n      summary: {\n+       coveragePercent: 11.1,\n-       coveragePercent: 0,\n        duplicates: 0,\n+       errors: 8,\n-       errors: 0,\n        expected: 9,\n        notices: 0,\n+       observed: 1,\n-       observed: 0,\n        quarantined: 0,\n+       received: 1,\n+       usable: 1\n-       received: 0,\n-       usable: 0\n      }\n    },\n+   rows: [\n+     {\n+       createdAt: '2026-11-11T16:50:07.934Z',\n+       duplicateKind: null,\n+       duplicateOf: null,\n+       id: 'c737406c-7f27-4704-ada5-9ed43b86ac2e',\n+       importId: '047dbc20-d753-49c6-913e-23f5202fcc88',\n+       naturalKey: 'AX-1103|S01|Forming|pressure',\n+       ordinal: 1,\n+       raw: {\n+         batchCode: 'AX-1103',\n+         equipment: 'P-01',\n+         measuredAt: '2026-11-10T09:15:00.000Z',\n+         parameter: 'pressure',\n+         sampleId: 'S01',\n+         sourceRecordId: 'MES-011',\n+         stage: 'Forming',\n+         unit: 'bar',\n+         value: 10.5\n+       },\n+       rawHash: '549070b5026cc0154bbb7100e9883bd12be8cd24592180f9246f535e025328f2'\n+     }\n+   ],\n-   rows: [],\n    schemaVersion: 1,\n    workspace: {\n      createdAt: '2026-11-11T16:50:07.849Z',\n      expiresAt: '2026-11-12T16:50:07.849Z',\n      id: '496eabed-341e-41e9-9a32-8593c0eb63ef',\n+     revision: 1\n-     revision: 0\n    }\n  }\n"
+    },
+    {
+      "name": "actual ZIP bytes extract to six files and preserve a verifiable snapshot without keys",
+      "passed": true
+    }
+  ],
+  "requests": [
+    {
+      "name": "Create workspace",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 201,
+      "elapsedMs": 70.91
+    },
+    {
+      "name": "Fabricated key",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 401,
+      "elapsedMs": 4.77
+    },
+    {
+      "name": "No authorization",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "name": "Cross-origin create",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 403,
+      "elapsedMs": 2.45
+    },
+    {
+      "name": "Malformed JSON",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 400,
+      "elapsedMs": 2
+    },
+    {
+      "name": "Wrong type",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 415,
+      "elapsedMs": 1.73
+    },
+    {
+      "name": "Oversized body",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 413,
+      "elapsedMs": 2.64
+    },
+    {
+      "name": "Wrong ingest role",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 403,
+      "elapsedMs": 2.83
+    },
+    {
+      "name": "Wrong ingest role",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 403,
+      "elapsedMs": 2.78
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 500,
+      "elapsedMs": 9.93
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 500,
+      "elapsedMs": 8.16
+    },
+    {
+      "name": "Different file same key",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 200,
+      "elapsedMs": 26.09
+    },
+    {
+      "name": "Observer proposal",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 403,
+      "elapsedMs": 2.31
+    },
+    {
+      "name": "Create isolated workspace",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 201,
+      "elapsedMs": 20.96
+    },
+    {
+      "name": "Foreign workspace read",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 401,
+      "elapsedMs": 1.53
+    },
+    {
+      "name": "Unsupported field",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 400,
+      "elapsedMs": 2.39
+    },
+    {
+      "name": "Nested row",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 400,
+      "elapsedMs": 1.37
+    },
+    {
+      "name": "Stale import",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 409,
+      "elapsedMs": 2.12
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 409,
+      "elapsedMs": 2.48
+    },
+    {
+      "name": "Concurrent import",
+      "method": "POST",
+      "status": 409
+    },
+    {
+      "name": "Concurrent import",
+      "method": "POST",
+      "status": 409
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 409,
+      "elapsedMs": 2.69
+    },
+    {
+      "name": "Observer snapshot",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 200,
+      "elapsedMs": 2.01
+    }
+  ],
+  "export": {
+    "zipBytes": 2344,
+    "files": [
+      "evidence.json",
+      "sources.json",
+      "measurements.csv",
+      "findings.csv",
+      "audit.csv",
+      "README.txt"
+    ],
+    "sha256": "377ff6c7b039d231e835687e97079ee6907b8323b59f8db395003dc78d95a6e0",
+    "scope": "SHA-256 over canonical byte-array JSON; actual downloaded-file byte hashes are recorded separately in browser evidence."
+  },
+  "finishedAt": "2026-11-11T16:50:08.018Z",
+  "summary": {
+    "passed": 8,
+    "total": 24,
+    "httpRequests": 23
+  },
+  "passed": false
+}

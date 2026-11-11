@@ -1,0 +1,8 @@
+{
+  "checkedOn": "2026-11-11",
+  "failureEvidence": "initial-worker-failures.json",
+  "diagnostic": "D1_ERROR: too many terms in compound SELECT: SQLITE_ERROR",
+  "cause": "The initial guarded bulk insertion used compound SELECT/UNION ALL statements accepted by local SQLite but rejected by the D1 runtime.",
+  "repair": "Guarded insertion now uses a bounded VALUES common-table expression followed by a single SELECT, with the same transactional mutation-token guard and fewer than 100 bound parameters per statement.",
+  "scope": "Retained local Worker development failure. Temporary local diagnostics were removed before publication."
+}

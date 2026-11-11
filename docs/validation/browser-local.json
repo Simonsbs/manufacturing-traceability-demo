@@ -1,0 +1,79 @@
+{
+  "checkedOn": "2026-11-11",
+  "url": "http://127.0.0.1:5177/",
+  "method": "Agent-operated real browser through application controls, using the real local SQLite HTTP service",
+  "checks": [
+    {
+      "name": "Fresh workspace shows no fabricated ingestion or findings",
+      "passed": true
+    },
+    {
+      "name": "Sample ingestion produces 11 retained rows, 4 usable, 5 quarantined, 2 duplicates and 8/9 coverage",
+      "passed": true
+    },
+    {
+      "name": "MES-004 lineage exposes source filename, row ordinal, records[3], raw payload and source hash",
+      "passed": true
+    },
+    {
+      "name": "A sourced unit proposal records revision 2 without changing the measurement",
+      "passed": true
+    },
+    {
+      "name": "Operator review controls are disabled; switching to Reviewer enables rationale and decision",
+      "passed": true
+    },
+    {
+      "name": "Approval changes the overlay to degrees Celsius and version 2 while the raw degC value remains",
+      "passed": true
+    },
+    {
+      "name": "Audit verification reconciles 11 raw rows, 3 audit events and 9 current measurements",
+      "passed": true
+    },
+    {
+      "name": "Actual six-file evidence ZIP downloads and passes independent extraction and replay verification",
+      "passed": true,
+      "evidence": "browser-export-local.json"
+    },
+    {
+      "name": "Reload restores the SQL workspace at revision 3 and the approved correction",
+      "passed": true
+    },
+    {
+      "name": "Unsupported JSON import displays an error and preserves the existing workspace",
+      "passed": true
+    },
+    {
+      "name": "Follow-up pressure ingestion closes the missing slot to 9/9 and retains prior finding history",
+      "passed": true
+    },
+    {
+      "name": "Observer can inspect evidence while ingestion controls are disabled",
+      "passed": true
+    },
+    {
+      "name": "Overview, source intake and method remain within the 390 by 844 viewport; wide tables and navigation scroll internally",
+      "passed": true,
+      "innerWidth": 390,
+      "documentScrollWidth": 375
+    },
+    {
+      "name": "Mobile lineage dialog remains usable and closes with Escape",
+      "passed": true
+    },
+    {
+      "name": "Downloaded sample JSON re-imports through the file chooser as an idempotent replay, preserving revision 4 and 12 rows",
+      "passed": true
+    },
+    {
+      "name": "The final fresh preview tab records no browser warnings or errors",
+      "passed": true
+    }
+  ],
+  "observations": [
+    "Real browser inspection exposed horizontal overflow from the offscreen table heading's absolutely positioned accessibility label. Positioning the scroll container fixed the document width while retaining internal scrolling.",
+    "A temporary Vite restart left one tab on a connection-error page. A fresh tab restored the saved workspace; no network or browser security settings were changed."
+  ],
+  "scope": "Synthetic scenarios and basic responsive/keyboard checks. Not a full accessibility audit or independent human validation."
+}

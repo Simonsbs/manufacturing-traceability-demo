@@ -1,0 +1,297 @@
+{
+  "url": "http://127.0.0.1:8788",
+  "startedAt": "2026-11-11T16:52:00.161Z",
+  "sourceFingerprint": "dd6e6696ab340895003d62932bd6ff0ddb745ab0471a86d686dbac11f8c32203",
+  "scope": "Actual HTTP requests and evidence verification using synthetic data. Expiry is validated separately with an injected service clock; no 24-hour public wait is claimed.",
+  "cases": [
+    {
+      "name": "create an empty SQL-backed workspace with declared batch masters",
+      "passed": true
+    },
+    {
+      "name": "missing or fabricated capability cannot read a workspace",
+      "passed": true
+    },
+    {
+      "name": "cross-origin mutation, malformed JSON and wrong content type are rejected",
+      "passed": true
+    },
+    {
+      "name": "bounded streaming input rejects an oversized request",
+      "passed": true
+    },
+    {
+      "name": "reviewer and observer cannot ingest data",
+      "passed": true
+    },
+    {
+      "name": "sample import produces independent expected totals and retained duplicates",
+      "passed": false,
+      "error": "Ingest source: expected 200, received 500; INTERNAL\n\n500 !== 200\n"
+    },
+    {
+      "name": "replayed import is idempotent even with an old revision",
+      "passed": false,
+      "error": "Ingest source: expected 200, received 500; INTERNAL\n\n500 !== 200\n"
+    },
+    {
+      "name": "reusing an import key for different data is a conflict",
+      "passed": false,
+      "error": "Different file same key: expected 409, received 500; INTERNAL\n\n500 !== 409\n"
+    },
+    {
+      "name": "raw canonical hashes and source pointers reconcile",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'ordinal')"
+    },
+    {
+      "name": "operator proposal leaves measurement and raw values unchanged",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "operator and observer cannot approve or reject a proposal",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "reviewer approval updates only a versioned overlay and retains resolved history",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "review cannot be recorded twice",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "observer cannot propose a correction",
+      "passed": true
+    },
+    {
+      "name": "cross-workspace read and source-row write are isolated",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "two proposals target a version; only the first approved correction can use it",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "stale proposal can be rejected without changing measurement values",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "identity edits and non-improving corrections are rejected",
+      "passed": false,
+      "error": "Cannot read properties of undefined (reading 'id')"
+    },
+    {
+      "name": "unknown request fields, nested source data and stale revisions are rejected",
+      "passed": false,
+      "error": "Stale import: expected 409, received 500; INTERNAL\n\n500 !== 409\n"
+    },
+    {
+      "name": "a follow-up source import closes the missing slot without replacing existing findings",
+      "passed": false,
+      "error": "Ingest source: expected 200, received 500; INTERNAL\n\n500 !== 200\n"
+    },
+    {
+      "name": "concurrent HTTP imports against one revision have exactly one atomic winner",
+      "passed": false,
+      "error": "Expected values to be strictly deep-equal:\n+ actual - expected\n\n  [\n+   500,\n+   500\n-   200,\n-   409\n  ]\n"
+    },
+    {
+      "name": "per-workspace import limits reject further writes without partial data",
+      "passed": false,
+      "error": "Ingest source: expected 200, received 500; INTERNAL\n\n500 !== 200\n"
+    },
+    {
+      "name": "observer reads persistent state and all evidence reconciles to reviewed changes",
+      "passed": true
+    },
+    {
+      "name": "actual ZIP bytes extract to six files and preserve a verifiable snapshot without keys",
+      "passed": true
+    }
+  ],
+  "requests": [
+    {
+      "name": "Create workspace",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 201,
+      "elapsedMs": 113.52
+    },
+    {
+      "name": "Fabricated key",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 401,
+      "elapsedMs": 11.59
+    },
+    {
+      "name": "No authorization",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "name": "Cross-origin create",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 403,
+      "elapsedMs": 11.7
+    },
+    {
+      "name": "Malformed JSON",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 400,
+      "elapsedMs": 11.38
+    },
+    {
+      "name": "Wrong type",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 415,
+      "elapsedMs": 8.74
+    },
+    {
+      "name": "Oversized body",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 413,
+      "elapsedMs": 11.73
+    },
+    {
+      "name": "Wrong ingest role",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 403,
+      "elapsedMs": 12.25
+    },
+    {
+      "name": "Wrong ingest role",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 403,
+      "elapsedMs": 13.51
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 500,
+      "elapsedMs": 67.15
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 500,
+      "elapsedMs": 32.3
+    },
+    {
+      "name": "Different file same key",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 500,
+      "elapsedMs": 30.64
+    },
+    {
+      "name": "Observer proposal",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 403,
+      "elapsedMs": 12.78
+    },
+    {
+      "name": "Create isolated workspace",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 201,
+      "elapsedMs": 26.05
+    },
+    {
+      "name": "Foreign workspace read",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 401,
+      "elapsedMs": 10.18
+    },
+    {
+      "name": "Unsupported field",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 400,
+      "elapsedMs": 14.14
+    },
+    {
+      "name": "Nested row",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 400,
+      "elapsedMs": 12.13
+    },
+    {
+      "name": "Stale import",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 500,
+      "elapsedMs": 32.18
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 500,
+      "elapsedMs": 28.16
+    },
+    {
+      "name": "Concurrent import",
+      "method": "POST",
+      "status": 500
+    },
+    {
+      "name": "Concurrent import",
+      "method": "POST",
+      "status": 500
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 500,
+      "elapsedMs": 31.56
+    },
+    {
+      "name": "Observer snapshot",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 200,
+      "elapsedMs": 13.62
+    }
+  ],
+  "export": {
+    "zipBytes": 2348,
+    "files": [
+      "evidence.json",
+      "sources.json",
+      "measurements.csv",
+      "findings.csv",
+      "audit.csv",
+      "README.txt"
+    ],
+    "sha256": "38184fd8f155160c57faa15e48baa2743e64e09b971dcb9a639c2aeeffc787c6",
+    "scope": "SHA-256 over canonical byte-array JSON; actual downloaded-file byte hashes are recorded separately in browser evidence."
+  },
+  "finishedAt": "2026-11-11T16:52:00.757Z",
+  "summary": {
+    "passed": 8,
+    "total": 24,
+    "httpRequests": 23
+  },
+  "passed": false
+}

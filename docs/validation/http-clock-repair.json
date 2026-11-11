@@ -1,0 +1,9 @@
+{
+  "checkedOn": "2026-11-11",
+  "failureEvidence": "initial-http-failures.json",
+  "initialHttpResult": {"passed":20,"total":24,"httpRequests":40},
+  "initialExportResult": {"passed":35,"total":38},
+  "cause": "The ingestion's finding timestamps used the operation start, but its audit event read the clock again. An advancing real clock made the replay verifier reject otherwise consistent history. The fixed-clock service tests had not exposed this.",
+  "repair": "Each import now shares one operation timestamp across retained rows, finding history and the audit event. An advancing-clock regression covers this boundary.",
+  "scope": "Retained development failure and repair explanation. Passing release results are recorded separately."
+}

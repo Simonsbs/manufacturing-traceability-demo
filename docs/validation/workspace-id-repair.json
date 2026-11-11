@@ -1,0 +1,7 @@
+{
+  "checkedOn": "2026-11-11",
+  "failureEvidence": "restart-http-failures.json",
+  "cause": "The initial missing-slot finding identifier contained batch/parameter but no workspace scope. A second workspace ingesting the same sample collided with the first workspace's SQL primary key.",
+  "repair": "Missing-slot finding IDs now include the workspace scope. The evaluation API requires the scope explicitly, and a two-workspace import regression verifies independent data and findings.",
+  "scope": "Retained development failure; no customer or public production records were involved."
+}

@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-11T16:56:08.310Z",
+  "url": "http://127.0.0.1:5177/",
+  "method": "Independent extraction and verification of the actual UI-downloaded evidence ZIP",
+  "fileName": "traceability-evidence.zip",
+  "sha256": "75faae55b3bce9ba47c35a5f0315bdfe221af42cdfda41d734ac3bf5ba1d4cc6",
+  "zipBytes": 9653,
+  "files": [
+    "evidence.json",
+    "sources.json",
+    "measurements.csv",
+    "findings.csv",
+    "audit.csv",
+    "README.txt"
+  ],
+  "integrity": {
+    "valid": true,
+    "rawChecked": 11,
+    "auditChecked": 3,
+    "effectiveChecked": 9,
+    "failures": []
+  },
+  "revision": 3,
+  "rawUnit": "degC",
+  "currentUnit": "°C",
+  "currentVersion": 2,
+  "approved": 1,
+  "resolvedFindings": 1,
+  "passed": true
+}

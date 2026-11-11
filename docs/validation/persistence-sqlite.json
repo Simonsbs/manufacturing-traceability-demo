@@ -1,0 +1,18 @@
+{
+  "runtime": "sqlite",
+  "checkedAt": "2026-11-11T17:04:42.078Z",
+  "sourceFingerprint": "60b84c22fa4a866fe6b80cd511e57c8179f130330d2950603249be7805d3f103",
+  "acceptance": {
+    "passed": 24,
+    "total": 24,
+    "httpRequests": 40
+  },
+  "restart": {
+    "passed": true,
+    "method": "Stopped the owned runtime process, restarted it against the same database, read using the same observer capability and compared the entire retained snapshot.",
+    "revision": 10,
+    "sourceRows": 14,
+    "auditEvents": 10
+  },
+  "passed": true
+}
