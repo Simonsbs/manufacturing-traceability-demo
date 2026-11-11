@@ -1,0 +1,32 @@
+{
+  "url": "https://traceability.bestdev.co.il",
+  "checkedAt": "2026-11-11T17:13:15.206Z",
+  "sourceFingerprint": "60b84c22fa4a866fe6b80cd511e57c8179f130330d2950603249be7805d3f103",
+  "checks": [
+    {
+      "name": "public HTTPS loads without sign-in",
+      "passed": true
+    },
+    {
+      "name": "CSP, framing, MIME, referrer and no-CORS boundaries apply",
+      "passed": true
+    },
+    {
+      "name": "application assets and self-hosted fonts load with immutable caching",
+      "passed": true
+    },
+    {
+      "name": "README, architecture, HTTP contract, validation and favicon are published",
+      "passed": true
+    },
+    {
+      "name": "health checks actual SQL connectivity and the exact application fingerprint",
+      "passed": true
+    },
+    {
+      "name": "unauthenticated data access, cross-origin writes and unsupported routes are refused",
+      "passed": true
+    }
+  ],
+  "passed": true
+}

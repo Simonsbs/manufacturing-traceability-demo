@@ -1,0 +1,61 @@
+{
+  "checkedOn": "2026-11-11",
+  "url": "https://traceability.bestdev.co.il/",
+  "sourceFingerprint": "60b84c22fa4a866fe6b80cd511e57c8179f130330d2950603249be7805d3f103",
+  "method": "Agent-operated real browser using only visible application controls and the actual public D1-backed API",
+  "checks": [
+    {
+      "name": "Custom-domain HTTPS loads without sign-in and starts with no fabricated ingestion",
+      "passed": true
+    },
+    {
+      "name": "Sample ingestion creates retained source rows and the seeded investigation findings",
+      "passed": true
+    },
+    {
+      "name": "Operator submits the MES-004 unit proposal at revision 2 without changing current values",
+      "passed": true
+    },
+    {
+      "name": "Operator review controls are disabled and Reviewer can record the rationale and decision",
+      "passed": true
+    },
+    {
+      "name": "Approval advances the workspace to revision 3 and measurement to version 2; raw degC and resolved history remain alongside current degrees Celsius",
+      "passed": true
+    },
+    {
+      "name": "Browser integrity verification reconciles 11 raw rows, 3 audit events and 9 current measurements",
+      "passed": true
+    },
+    {
+      "name": "Actual six-file evidence ZIP downloads and passes independent hash, extraction and replay checks",
+      "passed": true,
+      "evidence": "browser-export-public.json"
+    },
+    {
+      "name": "Reload restores the public SQL workspace and approved correction",
+      "passed": true
+    },
+    {
+      "name": "Actual downloaded sample JSON re-imports idempotently, preserving revision 3 and 11 rows",
+      "passed": true
+    },
+    {
+      "name": "390 by 844 mobile overview has no document horizontal overflow and metrics remain readable",
+      "passed": true,
+      "innerWidth": 390,
+      "documentScrollWidth": 375
+    },
+    {
+      "name": "Observer retains source-lineage inspection while ingestion is disabled; the dialog closes with Escape",
+      "passed": true
+    },
+    {
+      "name": "Public browser console contains no warning or error entries",
+      "passed": true
+    }
+  ],
+  "screenshots": ["desktop.png", "mobile.png", "lineage.png"],
+  "scope": "Synthetic demonstration and agent validation. Basic responsive/keyboard checks are not a complete accessibility audit; demo roles do not establish verified or separate human reviewers."
+}

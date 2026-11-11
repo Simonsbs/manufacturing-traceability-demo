@@ -1,0 +1,15 @@
+{
+  "checkedOn":"2026-11-11",
+  "hostname":"traceability.bestdev.co.il",
+  "providerStatus":"active",
+  "tlsStatus":"active",
+  "cnameTarget":"custom-domains.chatgpt.site",
+  "proxyMode":"DNS only",
+  "scope":"Only the new hostname and its two issued validation TXT records were added. Zone-wide SSL and existing records were not changed.",
+  "existingSites":[
+    {"url":"https://bestdev.co.il/","status":200},
+    {"url":"https://knowledge.bestdev.co.il/","status":200},
+    {"url":"https://integration.bestdev.co.il/","status":200},
+    {"url":"https://presales.bestdev.co.il/","status":200}
+  ]
+}

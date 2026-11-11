@@ -1,0 +1,30 @@
+{
+  "checkedAt": "2026-11-11T17:14:58.909Z",
+  "url": "https://traceability.bestdev.co.il/",
+  "method": "Independent extraction and verification of the actual UI-downloaded evidence ZIP",
+  "fileName": "traceability-evidence (1).zip",
+  "sha256": "cc8640757c1e9c14632dfea3bece6d7f073b4d38671142130e60d5d57b4e2a25",
+  "zipBytes": 9686,
+  "files": [
+    "evidence.json",
+    "sources.json",
+    "measurements.csv",
+    "findings.csv",
+    "audit.csv",
+    "README.txt"
+  ],
+  "integrity": {
+    "valid": true,
+    "rawChecked": 11,
+    "auditChecked": 3,
+    "effectiveChecked": 9,
+    "failures": []
+  },
+  "revision": 3,
+  "rawUnit": "degC",
+  "currentUnit": "°C",
+  "currentVersion": 2,
+  "approved": 1,
+  "resolvedFindings": 1,
+  "passed": true
+}

@@ -1,0 +1,399 @@
+{
+  "url": "https://simonsbs-traceability-lab.thefrik.chatgpt.site",
+  "startedAt": "2026-11-11T17:09:57.859Z",
+  "sourceFingerprint": "60b84c22fa4a866fe6b80cd511e57c8179f130330d2950603249be7805d3f103",
+  "scope": "Actual HTTP requests and evidence verification using synthetic data. Expiry is validated separately with an injected service clock; no 24-hour public wait is claimed.",
+  "cases": [
+    {
+      "name": "create an empty SQL-backed workspace with declared batch masters",
+      "passed": true
+    },
+    {
+      "name": "missing or fabricated capability cannot read a workspace",
+      "passed": true
+    },
+    {
+      "name": "cross-origin mutation, malformed JSON and wrong content type are rejected",
+      "passed": true
+    },
+    {
+      "name": "bounded streaming input rejects an oversized request",
+      "passed": true
+    },
+    {
+      "name": "reviewer and observer cannot ingest data",
+      "passed": true
+    },
+    {
+      "name": "sample import produces independent expected totals and retained duplicates",
+      "passed": true
+    },
+    {
+      "name": "replayed import is idempotent even with an old revision",
+      "passed": true
+    },
+    {
+      "name": "reusing an import key for different data is a conflict",
+      "passed": true
+    },
+    {
+      "name": "raw canonical hashes and source pointers reconcile",
+      "passed": true
+    },
+    {
+      "name": "operator proposal leaves measurement and raw values unchanged",
+      "passed": true
+    },
+    {
+      "name": "operator and observer cannot approve or reject a proposal",
+      "passed": true
+    },
+    {
+      "name": "reviewer approval updates only a versioned overlay and retains resolved history",
+      "passed": true
+    },
+    {
+      "name": "review cannot be recorded twice",
+      "passed": true
+    },
+    {
+      "name": "observer cannot propose a correction",
+      "passed": true
+    },
+    {
+      "name": "cross-workspace read and source-row write are isolated",
+      "passed": true
+    },
+    {
+      "name": "two proposals target a version; only the first approved correction can use it",
+      "passed": true
+    },
+    {
+      "name": "stale proposal can be rejected without changing measurement values",
+      "passed": true
+    },
+    {
+      "name": "identity edits and non-improving corrections are rejected",
+      "passed": true
+    },
+    {
+      "name": "unknown request fields, nested source data and stale revisions are rejected",
+      "passed": true
+    },
+    {
+      "name": "a follow-up source import closes the missing slot without replacing existing findings",
+      "passed": true
+    },
+    {
+      "name": "concurrent HTTP imports against one revision have exactly one atomic winner",
+      "passed": true
+    },
+    {
+      "name": "per-workspace import limits reject further writes without partial data",
+      "passed": true
+    },
+    {
+      "name": "observer reads persistent state and all evidence reconciles to reviewed changes",
+      "passed": true
+    },
+    {
+      "name": "actual ZIP bytes extract to six files and preserve a verifiable snapshot without keys",
+      "passed": true
+    }
+  ],
+  "requests": [
+    {
+      "name": "Create workspace",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 201,
+      "elapsedMs": 2413.02
+    },
+    {
+      "name": "Fabricated key",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 401,
+      "elapsedMs": 127.14
+    },
+    {
+      "name": "No authorization",
+      "method": "GET",
+      "status": 401
+    },
+    {
+      "name": "Cross-origin create",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 403,
+      "elapsedMs": 35.51
+    },
+    {
+      "name": "Malformed JSON",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 400,
+      "elapsedMs": 34.27
+    },
+    {
+      "name": "Wrong type",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 415,
+      "elapsedMs": 53.59
+    },
+    {
+      "name": "Oversized body",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 413,
+      "elapsedMs": 127.26
+    },
+    {
+      "name": "Wrong ingest role",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 403,
+      "elapsedMs": 114.98
+    },
+    {
+      "name": "Wrong ingest role",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 403,
+      "elapsedMs": 114.12
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 200,
+      "elapsedMs": 466.77
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 200,
+      "elapsedMs": 288.87
+    },
+    {
+      "name": "Different file same key",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 409,
+      "elapsedMs": 226.68
+    },
+    {
+      "name": "Propose correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 200,
+      "elapsedMs": 391.01
+    },
+    {
+      "name": "Forbidden review",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/review",
+      "status": 403,
+      "elapsedMs": 126.54
+    },
+    {
+      "name": "Forbidden review",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/review",
+      "status": 403,
+      "elapsedMs": 99.22
+    },
+    {
+      "name": "Review correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/review",
+      "status": 200,
+      "elapsedMs": 396.04
+    },
+    {
+      "name": "Review correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/review",
+      "status": 409,
+      "elapsedMs": 193.96
+    },
+    {
+      "name": "Read unchanged revision",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 200,
+      "elapsedMs": 179.24
+    },
+    {
+      "name": "Observer proposal",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 403,
+      "elapsedMs": 111.81
+    },
+    {
+      "name": "Create isolated workspace",
+      "method": "POST",
+      "path": "/api/workspaces",
+      "status": 201,
+      "elapsedMs": 204.22
+    },
+    {
+      "name": "Foreign workspace read",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 401,
+      "elapsedMs": 174.02
+    },
+    {
+      "name": "Foreign row correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 404,
+      "elapsedMs": 174.41
+    },
+    {
+      "name": "Propose correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 200,
+      "elapsedMs": 388.05
+    },
+    {
+      "name": "Propose correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 200,
+      "elapsedMs": 352.59
+    },
+    {
+      "name": "Review correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/review",
+      "status": 200,
+      "elapsedMs": 354.7
+    },
+    {
+      "name": "Review correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/review",
+      "status": 409,
+      "elapsedMs": 165.31
+    },
+    {
+      "name": "Review correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/review",
+      "status": 200,
+      "elapsedMs": 369.64
+    },
+    {
+      "name": "Invalid correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 400,
+      "elapsedMs": 178.28
+    },
+    {
+      "name": "Invalid correction",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/proposals",
+      "status": 422,
+      "elapsedMs": 210.11
+    },
+    {
+      "name": "Unsupported field",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 400,
+      "elapsedMs": 104.31
+    },
+    {
+      "name": "Nested row",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 400,
+      "elapsedMs": 90.94
+    },
+    {
+      "name": "Stale import",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 409,
+      "elapsedMs": 271.18
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 200,
+      "elapsedMs": 430.9
+    },
+    {
+      "name": "Concurrent import",
+      "method": "POST",
+      "status": 409
+    },
+    {
+      "name": "Concurrent import",
+      "method": "POST",
+      "status": 200
+    },
+    {
+      "name": "Read after concurrency",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 200,
+      "elapsedMs": 180.66
+    },
+    {
+      "name": "Ingest source",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 200,
+      "elapsedMs": 425.31
+    },
+    {
+      "name": "Fifth import rejected",
+      "method": "POST",
+      "path": "/api/workspaces/{workspace}/imports",
+      "status": 429,
+      "elapsedMs": 245.2
+    },
+    {
+      "name": "Read bounded workspace",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 200,
+      "elapsedMs": 192.47
+    },
+    {
+      "name": "Observer snapshot",
+      "method": "GET",
+      "path": "/api/workspaces/{workspace}",
+      "status": 200,
+      "elapsedMs": 193.8
+    }
+  ],
+  "export": {
+    "zipBytes": 12774,
+    "files": [
+      "evidence.json",
+      "sources.json",
+      "measurements.csv",
+      "findings.csv",
+      "audit.csv",
+      "README.txt"
+    ],
+    "sha256": "64bf72986bdc1c6505a5239224a257b5bb4ce3b5b43f4d3e3177f75cd9b0f99a"
+  },
+  "finishedAt": "2026-11-11T17:10:08.612Z",
+  "summary": {
+    "passed": 24,
+    "total": 24,
+    "httpRequests": 40
+  },
+  "passed": true
+}
